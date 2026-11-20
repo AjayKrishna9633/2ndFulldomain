@@ -1,0 +1,411 @@
+1. Second Highest Salary
+Find the 2nd highest distinct salary.
+2. Second Highest Marks
+Find the 2nd highest marks.
+3. Average Salary per Department
+Engineering
+HR
+Finance
+
+using
+
+$group
+$avg
+4. Average Marks per Class
+Class A
+Class B
+Class C
+5. Employees whose
+salary > 60000
+6. Employees
+salary >60000
+AND
+
+marks >90
+7.
+salary>60000
+
+OR
+
+department HR
+8.
+
+Names starting with
+
+A
+
+using regex
+
+9.
+
+Names ending with
+
+a
+10.
+
+Names containing
+
+vi
+11.
+
+Use $cond
+
+Example
+
+If salary>70000
+
+High Salary
+
+Else
+
+Normal Salary
+12.
+
+How many employees
+
+used coupons?
+
+orders.coupon=true
+13.
+
+How many employees
+
+placed
+
+2 orders?
+
+14.
+
+Count employees
+
+created today
+
+15.
+
+Increase salary
+
+by
+
+10%
+
+updateMany
+$mul
+
+or
+
+$inc
+16.
+
+Reduce marks
+
+by
+
+5
+
+17.
+
+Practice
+
+$unwind
+
+using
+
+projects
+18.
+
+Total project hours
+
+per department
+
+Need
+
+$unwind
+$group
+$sum
+19.
+
+Total order amount
+
+per employee
+
+Need
+
+$unwind
+$sum
+20.
+
+Most worked project
+
+21.
+
+Upsert
+
+If employee doesn't exist
+
+insert
+22.
+
+Difference
+
+$push
+
+vs
+
+$addToSet
+
+Practice using
+
+skills
+23.
+
+Difference
+
+$pop
+
+$pull
+
+using
+
+skills
+24.
+
+Compound Index
+
+department
+
+salary
+25.
+
+TTL Index
+
+createdAt
+
+Expire
+
+after
+
+60 seconds
+26.
+
+Geospatial Index
+
+using
+
+location
+
+Then practice
+
+$near
+
+db.employees.insertMany([
+{
+    name: "Ajay",
+    age: 22,
+    gender: "Male",
+    department: "Engineering",
+    class: "A",
+    salary: 55000,
+    marks: 88,
+    city: "Kochi",
+    skills: ["JavaScript","React","Node"],
+    projects: [
+        {name:"Gear Grid",hours:120},
+        {name:"CRM",hours:80}
+    ],
+    orders:[
+        {amount:1500,coupon:true},
+        {amount:800,coupon:false}
+    ],
+    location:{
+        type:"Point",
+        coordinates:[76.2673,10.8505]
+    },
+    createdAt:new Date()
+},
+
+{
+    name:"John",
+    age:24,
+    gender:"Male",
+    department:"Engineering",
+    class:"A",
+    salary:70000,
+    marks:95,
+    city:"Delhi",
+    skills:["Java","Spring"],
+    projects:[
+        {name:"Bank",hours:200},
+        {name:"Payroll",hours:90}
+    ],
+    orders:[
+        {amount:500,coupon:false}
+    ],
+    location:{
+        type:"Point",
+        coordinates:[77.1025,28.7041]
+    },
+    createdAt:new Date()
+},
+
+{
+    name:"Alice",
+    age:23,
+    gender:"Female",
+    department:"Engineering",
+    class:"A",
+    salary:70000,
+    marks:92,
+    city:"Bangalore",
+    skills:["Node","MongoDB"],
+    projects:[
+        {name:"Chat",hours:150}
+    ],
+    orders:[
+        {amount:400,coupon:true},
+        {amount:300,coupon:true}
+    ],
+    location:{
+        type:"Point",
+        coordinates:[77.5946,12.9716]
+    },
+    createdAt:new Date()
+},
+
+{
+    name:"Bob",
+    age:29,
+    gender:"Male",
+    department:"HR",
+    class:"B",
+    salary:45000,
+    marks:70,
+    city:"Mumbai",
+    skills:["Excel","Recruitment"],
+    projects:[
+        {name:"Hiring",hours:100}
+    ],
+    orders:[
+        {amount:900,coupon:false}
+    ],
+    location:{
+        type:"Point",
+        coordinates:[72.8777,19.0760]
+    },
+    createdAt:new Date()
+},
+
+{
+    name:"Sara",
+    age:26,
+    gender:"Female",
+    department:"HR",
+    class:"B",
+    salary:50000,
+    marks:82,
+    city:"Chennai",
+    skills:["Communication","Excel"],
+    projects:[
+        {name:"Training",hours:140}
+    ],
+    orders:[
+        {amount:700,coupon:true}
+    ],
+    location:{
+        type:"Point",
+        coordinates:[80.2707,13.0827]
+    },
+    createdAt:new Date()
+},
+
+{
+    name:"David",
+    age:31,
+    gender:"Male",
+    department:"Finance",
+    class:"C",
+    salary:80000,
+    marks:91,
+    city:"Hyderabad",
+    skills:["Accounting","Excel"],
+    projects:[
+        {name:"Audit",hours:220}
+    ],
+    orders:[
+        {amount:2000,coupon:true}
+    ],
+    location:{
+        type:"Point",
+        coordinates:[78.4867,17.3850]
+    },
+    createdAt:new Date()
+},
+
+{
+    name:"Emma",
+    age:27,
+    gender:"Female",
+    department:"Finance",
+    class:"C",
+    salary:80000,
+    marks:90,
+    city:"Pune",
+    skills:["Excel","SAP"],
+    projects:[
+        {name:"Budget",hours:180}
+    ],
+    orders:[
+        {amount:500,coupon:false}
+    ],
+    location:{
+        type:"Point",
+        coordinates:[73.8567,18.5204]
+    },
+    createdAt:new Date()
+},
+
+{
+    name:"Kevin",
+    age:25,
+    gender:"Male",
+    department:"Engineering",
+    class:"A",
+    salary:65000,
+    marks:86,
+    city:"Kochi",
+    skills:["React","MongoDB"],
+    projects:[
+        {name:"Inventory",hours:140}
+    ],
+    orders:[
+        {amount:1000,coupon:true}
+    ],
+    location:{
+        type:"Point",
+        coordinates:[76.2673,10.8505]
+    },
+    createdAt:new Date()
+}
+]);
+
+db.students.aggregate([
+    {
+        $match: {
+            class: "X",
+            $or: [
+                {
+                    marks: {
+                        $gte: 40,
+                        $lte: 60
+                    }
+                },
+                {
+                    marks: {
+                        $gte: 80,
+                        $lte: 90
+                    }
+                }
+            ]
+        }
+    },
+    
+]);
